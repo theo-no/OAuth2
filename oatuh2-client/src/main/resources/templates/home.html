@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>안녕하세요</title>
+</head>
+<body>
+<p sec:authorize="isAuthenticated()">
+    로그인 사용자 name : <span sec:authentication="name"></span>입니다.<br>
+    로그인 사용자 preferredUsername : <span sec:authentication="principal.preferredUsername"></span>입니다.<br>
+    로그인 사용자 givenName : <span sec:authentication="principal.givenName"></span>입니다.<br>
+    로그인 사용자 ID Token : <span th:text="${idToken}"></span><br>
+    로그인 사용자 AC Token : <span th:text="${acToken}"></span>
+</p>
+<p>
+    <a type="button" href="/logout" sec:authorize="isAuthenticated()">로그아웃</a>
+    <a type="button" href="/login" sec:authorize="!isAuthenticated()">로그인</a>
+</p>
+
+</body>
+</html>
